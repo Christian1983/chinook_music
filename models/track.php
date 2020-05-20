@@ -10,8 +10,14 @@ class Track {
     public $unit_price;
 
     function __construct($n, $aid, $mid, $gid, $composer, $duration, $bytes, $unit_price) {
-        $name = $n;
-        $this->$album_id = $aid;
+        $this->name = $n;
+        $this->album_id = $aid;
+        $this->media_type_id = $mid;
+        $this->genre_id = $gid;
+        $this->composer = $composer;
+        $this->duration = $duration;
+        $this->bytes = $bytes;
+        $this->unit_price = $unit_price;
     }
 
     public static function all() {
@@ -35,7 +41,7 @@ class Track {
             $iarr[$i] = new Track($n, $aid, $mid, $gid, $composer, $duration, $bytes, $unit_price);
             $i = $i + 1;
         }
-        print_r($iarr);
+        return $iarr;
     }
     
 

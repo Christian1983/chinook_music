@@ -28,7 +28,7 @@
   <header id='mainHeader'>
     <?php include 'layout/navigation.php'?>
   </header>
-  <div id="mainContent">
+  <div id="mainContent" class="py-5">
       <div class='px-5'>
         <?php // get current view
             $view = getView($_SERVER['REQUEST_URI']);

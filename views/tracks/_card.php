@@ -3,19 +3,19 @@
     <div class="card-body">
         <h5 class="card-title" >
             <?php 
-                echo $track->name;
+                echo $track->Name;
             ?>
         </h5>
         <h5 class="card-title small" >
             <?php 
-                echo $track->composer;
+                echo $track->Composer;
             ?>
         </h5>        
     </div>
     <div class="card-footer">
         <h5 class="float-right small" style="color: red" >
             <?php 
-                echo $track->unit_price . '€';
+                echo $track->UnitPrice . '€';
             ?>
         </h5>
     </div>    

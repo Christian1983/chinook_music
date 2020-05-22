@@ -5,18 +5,9 @@
     set_include_path(get_include_path().PATH_SEPARATOR.MODEL_DIR);
     spl_autoload_extensions('.php');
     spl_autoload_register();
-    include 'routes.php';
-
-    function getView($request) {
-        global $routes;
-
-        $route_path = $routes[$request];
-        if(empty($route_path))
-            return 'static/404.html';
-        else
-            $view = $route_path['file'] . '.php';
-            return $view;
-    }
+    
+    require 'router.php';
+    $router = new Router();
 ?>
 <head>
   <meta charset="utf-8">
@@ -33,10 +24,8 @@
   </header>
   <div id="mainContent" class="py-5">
       <div class='px-5'>
-        <?php // get current view
-            $view = getView($_SERVER['REQUEST_URI']);
-            if ( $view != false )
-                include $view;
+        <?php 
+          include $router->view(); 
         ?>
       </div>
   </div>

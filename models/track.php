@@ -1,5 +1,8 @@
 <?php 
-class Track extends Base {
+    class Track extends Base {
 
-}
+        public function album() {
+            
+        }
+    }
 ?>

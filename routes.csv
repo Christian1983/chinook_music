@@ -1,3 +1,4 @@
 /,views/root,home,The best Music!
 /tracks,views/tracks/index,tracks,Our best Songs!
 /albums,views/albums/index,alben,Our best Albums!
+/artists,views/artists/index,artists,The best Artist ever!

@@ -17,7 +17,7 @@
     <div class="card-footer">
         <h5 class="float-right small" style="color: red" >
             <?php 
-                echo $album->ArtistId;
+                echo $album->price() . "€";
             ?>
         </h5>
     </div>    

@@ -6,9 +6,11 @@
     spl_autoload_extensions('.php');
     spl_autoload_register();
     
+    require 'db/connector.php';
     require 'router.php';
     $router = new Router();
 ?>
+
 <head>
   <meta charset="utf-8">
   <title>Chinook Musik</title>

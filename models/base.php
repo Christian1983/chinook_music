@@ -1,25 +1,19 @@
 <?php
 class Base {
-    private $db;
-    private $table;
-    private $class_name;
     protected $properties = array();
 
     public function __construct($params) {
-        $this->db = new SQLite3('db/chinook.db');
-        $this->class_name = get_class($this);
-        $this->table = strtolower($this->class_namme) . 's';
-
         foreach($params as $key => $value) {
             $this->properties[$key] = $value;
         }
     }
 
     public static function all() {
-        $sdb = new SQLite3('db/chinook.db');
+        $connector = Connector::getInstance();
+        $db = $connector->db();
         $klass = get_called_class();
         $table = strtolower(get_called_class()) . 's';
-        $res = $sdb->query("select * from $table;");
+        $res = $db->query("select * from $table;");
 
         //instance array
         $iarr=array();
@@ -33,7 +27,8 @@ class Base {
 
     public static function find($id) {
         if (is_numeric($id))
-            $sdb = new SQLite3('db/chinook.db');
+            $connector = Connector::getInstance();
+            $db = $connector->db();
             $klass = get_called_class();
             $table = strtolower(get_called_class()) . 's';
 
@@ -43,7 +38,8 @@ class Base {
     }
 
     public static function where($params) {
-        $db = new SQLite3('db/chinook.db');
+        $connector = Connector::getInstance();
+        $db = $connector->db();
         $klass = get_called_class();
         $table = strtolower(get_called_class()) . 's';
         $query = "select * from $table where";
@@ -72,7 +68,10 @@ class Base {
     }
 
     public function __get($prop) {
-        return $this->properties[$prop];
+        if(is_null($this->properties[$prop]))
+            return null;
+        else
+            return $this->properties[$prop];
     }
 
 

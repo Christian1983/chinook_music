@@ -37,9 +37,34 @@ class Base {
             $klass = get_called_class();
             $table = strtolower(get_called_class()) . 's';
 
-            $result = $db->exec("select * from tracks where TrackId = $id");
+            $result = $db->exec("select * from $table where $klass" . "Id = $id");
             $row = $res->fetchArray();
             return new $klass(BASE::build_properties_from_array($row));
+    }
+
+    public static function where($params) {
+        $db = new SQLite3('db/chinook.db');
+        $klass = get_called_class();
+        $table = strtolower(get_called_class()) . 's';
+        $query = "select * from $table where";
+
+        $row=0;
+        foreach($params as $key => $value) {
+            if(sizeof($params) == 1 || sizeof($parmas) == $row-1)
+                $query .= " $key = $value;";
+            else
+            $query .= " $key = $value AND";
+        }
+
+        $res = $db->query($query);
+        $iarr=array();
+        $i=0;
+        while ($row = $res->fetchArray()) {
+            $iarr[$i] = new $klass(BASE::build_properties_from_array($row));
+            $i++;
+        }
+
+        return $iarr;        
     }
 
     public function __set($prop, $value) {
@@ -48,14 +73,6 @@ class Base {
 
     public function __get($prop) {
         return $this->properties[$prop];
-    }
-
-    public function __toString() {
-        $tmp="";
-        foreach($properties as $key => $value) {
-            $tmp . "$key => $value";
-        }
-        return $tmp;
     }
 
 

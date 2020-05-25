@@ -1,11 +1,10 @@
 <?php 
-  $tracks = Album::all();
+  $albums = Album::all();
 ?>
 
 <div class="card-deck mt-5">
   <?php 
-    global $tracks;
-    foreach($tracks as $track) { 
+    foreach($albums as $album) { 
       include '_card.php';
     }
   ?>

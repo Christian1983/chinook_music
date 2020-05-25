@@ -17,8 +17,8 @@
             $route = $this->routes[$request];
 
             if(is_null($route) == true)
-                if(file_exists($request) == true)
-                    return $request;
+                if(file_exists(substr($request, 1)) == true)
+                    return substr($request, 1);
                 else
                     return 'static/404.html';
             else

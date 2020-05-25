@@ -3,14 +3,21 @@
     <div class="card-body">
         <h5 class="card-title" >
             <?php 
-                echo $track->Title;
+                echo $album->Title;
             ?>
-        </h5>    
+        </h5>
+        <table class="table table-striped">
+            <?php 
+                foreach($album->tracks() as $track) {
+                    include "_row.php";
+                }
+            ?>
+        </table>
     </div>
     <div class="card-footer">
         <h5 class="float-right small" style="color: red" >
             <?php 
-                echo $track->ArtistId;
+                echo $album->ArtistId;
             ?>
         </h5>
     </div>    

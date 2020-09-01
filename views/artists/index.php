@@ -2,6 +2,10 @@
   $artists = Artist::all();
 ?>
 
-<div class="card-deck mt-5">
-  <?php ?>
+<div class="artist-container">
+  <?php 
+    foreach($artists as $artist) { 
+      include '_artist.php';
+    }
+  ?>
 </div>

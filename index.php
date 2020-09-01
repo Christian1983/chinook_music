@@ -26,7 +26,6 @@
   </header>
   <div id="mainContent" class="py-5">
       <div class='px-5'>
-        <h2>Request:  <?php echo $_SERVER['REQUEST_URI'] ?></h2>
         <?php 
           include $router->view(); 
         ?>

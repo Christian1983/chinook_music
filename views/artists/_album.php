@@ -1,4 +1,4 @@
 <tr>
-  <td><?php $album->Name ?></td>
-  <td><?php $album->price() ?></td>
+  <td><?php echo $album->Title ?></td>
+  <td><?php echo $album->price() ?></td>
 </tr>

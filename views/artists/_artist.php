@@ -5,7 +5,7 @@
       <img class="" src="https://picsum.photos/400/200" alt="Ein Bild" />
     </div>
     <div class='col-9'> 
-      <table class='table table-striped table-hover'>
+      <table class='table table-bordered table-hover mt-5'>
         <thead>
           <tr>
             <td>Album</td>

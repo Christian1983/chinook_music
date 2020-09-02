@@ -49,15 +49,17 @@ class Base {
             if(sizeof($params) == 1 || sizeof($parmas) == $row-1)
                 $query .= " $key = $value;";
             else
-            $query .= " $key = $value AND";
+                $query .= " $key = $value AND";
         }
 
         $res = $db->query($query);
         $iarr=array();
         $i=0;
-        while ($row = $res->fetchArray()) {
-            $iarr[$i] = new $klass(BASE::build_properties_from_array($row));
-            $i++;
+        if ($res) {
+            while ($row = $res->fetchArray()) {
+                $iarr[$i] = new $klass(BASE::build_properties_from_array($row));
+                $i++;
+            }
         }
 
         return $iarr;        
@@ -86,5 +88,6 @@ class Base {
         }
         return $properties;
     }
+
 }
 ?>
